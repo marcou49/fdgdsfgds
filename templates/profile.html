@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Usuario: {{ user.name }}</p>
+<p>email: {{ user.email }}</p>
+<p>Residencia: {{user.residencia}}</p>
+
+
+<a class="btn btn-primary" href="/edit_profile">Editar Perfíl</a> <a class="btn btn-primary" href="/delete_profile">Eliminar Perfíl</a>
+<a class="btn btn-primary" href="/logout">Desconectarse</a>
+
+{% endblock content %}

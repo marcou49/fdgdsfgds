@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if mensajes %}
+
+Hola {{ user.name }} esta es tu lista de mensajes <br/> <span class="no-leido">En naranja los mensajes pendientes de leer.</span>
+<hr style="display:block; border:none; height:20px"/>
+
+{% else %}
+
+Hola {{ user.name }} no tienes mensajes
+<hr style="display:block; border:none; height:20px"/>
+{% endif %}
+
+
+
+<table class="table table-striped  table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Asunto</th>
+      <th scope="col">De</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Leer</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for mensaje in mensajes %}
+
+{% if mensaje.leido == False %} <tr class="no-leido"> {% else %} <tr> {% endif %}
+  <td><a href="/mensaje/{{ mensaje.id }}">{{ mensaje.asunto }}</a></td>
+  <td>{{ mensaje.sender }}</td>
+  <td> {{ mensaje.fecha }}</td>
+  <td><a href="/mensaje/{{ mensaje.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a></td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+</table>
+
+
+<a class="btn btn-primary" href="/mandar">Mandar mensajes</a>
+
+{% endblock content %}

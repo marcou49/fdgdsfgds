@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<p>{{user.name}}, ¿Realmente deseas eliminar tu perfíl ?</p>
+
+    <form method="post" action="/delete_profile">
+        <button type="button" class="btn btn-danger">Si, eliminar</button>
+        <a class="btn btn-success" href="/profile">No, fue un error</a>
+    </form>
+
+
+
+
+
+{% endblock content %}
